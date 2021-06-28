@@ -1,6 +1,12 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "baseUrl": "./src/"
+        "target": "es2020",
+        "baseUrl": ".",
+        "paths": {
+            "components/*": ["./src/components/*"],
+            "containers/*": ["./src/containers/*"],
+            "assets/*": ["./src/assets/*"]
+        }
     },
+    "exclude": ["dist"]
 }

@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 module.exports = {
     output: {
@@ -40,6 +41,10 @@ module.exports = {
                     'sass-loader',
                 ],
             },
+            {
+                test: /\.(png|jpg)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     plugins: [
@@ -50,6 +55,11 @@ module.exports = {
         new CleanWebpackPlugin(),
         new MiniCSSExtractPlugin({
             filename: 'assets/[name].css',
+        }),
+        new ImageMinimizerPlugin({
+            minimizerOptions: {
+                plugins: [['optipng', { optimizationLevel: 5 }]],
+            },
         }),
     ],
 }
