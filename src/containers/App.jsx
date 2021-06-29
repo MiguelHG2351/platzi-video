@@ -1,20 +1,15 @@
 import { hot } from 'react-hot-loader/root'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Header from 'components/Header'
 import Search from 'components/Search'
 import Categories from 'components/Categories'
 import Carousel from 'components/Carousel'
 import CarouselItem from 'components/CarouselItem'
 import Footer from 'components/Footer'
+import useInitialState from 'hooks/useInitialState'
 
 const App = () => {
-    const [videos, setVideo] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:3001/initalState')
-            .then((response) => response.json())
-            .then((data) => setVideo(data))
-    }, [])
+    const videos = useInitialState('http://localhost:3001/initalState')
 
     console.log(videos)
     return (

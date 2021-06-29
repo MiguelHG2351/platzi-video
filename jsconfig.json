@@ -5,7 +5,8 @@
         "paths": {
             "components/*": ["./src/components/*"],
             "containers/*": ["./src/containers/*"],
-            "assets/*": ["./src/assets/*"]
+            "assets/*": ["./src/assets/*"],
+            "hooks/*": ["./src/hooks/*"]
         }
     },
     "exclude": ["dist"]
