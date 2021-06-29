@@ -1,6 +1,8 @@
-$body-color: linear-gradient(to right, #09f, white);
+@import './Vars.scss';
+@import './Media.scss';
 
 body {
     margin: 0;
-    background-image: $body-color;
+    font-family: $theme-font;
+    background: $main-color;
 }
