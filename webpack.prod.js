@@ -14,7 +14,7 @@ module.exports = merge(config, {
             cacheGroups: {
                 default: false,
                 commons: {
-                    test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
+                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
                     chunks: 'all',
                     name: 'commons',
                     filename: 'assets/common.[chunkhash].js',

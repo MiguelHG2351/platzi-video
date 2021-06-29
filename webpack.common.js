@@ -19,6 +19,8 @@ module.exports = {
             routes: path.resolve(__dirname, 'src/routes'),
             assets: path.resolve(__dirname, 'src/assets'),
             hooks: path.resolve(__dirname, 'src/hooks'),
+            actions: path.resolve(__dirname, 'src/actions'),
+            reducers: path.resolve(__dirname, 'src/reducers'),
         },
     },
     module: {
