@@ -6,7 +6,8 @@
             "components/*": ["./src/components/*"],
             "containers/*": ["./src/containers/*"],
             "assets/*": ["./src/assets/*"],
-            "hooks/*": ["./src/hooks/*"]
+            "hooks/*": ["./src/hooks/*"],
+            "pages/*": ["./src/pages/*"]
         }
     },
     "exclude": ["dist"]

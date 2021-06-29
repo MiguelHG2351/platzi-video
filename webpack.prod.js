@@ -1,23 +1,20 @@
-const { merge } = require('webpack-merge');
-const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const config = require('./webpack.common');
+const { merge } = require('webpack-merge')
+const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const config = require('./webpack.common')
 
 module.exports = merge(config, {
     entry: './src/index.js',
     mode: 'production',
     optimization: {
         minimize: true,
-        minimizer: [
-            new CSSMinimizerWebpackPlugin(),
-            new TerserPlugin(),
-        ],
+        minimizer: [new CSSMinimizerWebpackPlugin(), new TerserPlugin()],
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
                 default: false,
                 commons: {
-                    test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                    test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/,
                     chunks: 'all',
                     name: 'commons',
                     filename: 'assets/common.[chunkhash].js',
@@ -37,4 +34,4 @@ module.exports = merge(config, {
             },
         },
     },
-});
+})

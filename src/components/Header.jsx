@@ -1,12 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import headerImage from 'assets/images/logo-platzi-video-BW2.png'
-import perfilLogo from 'assets/images/user-icon.png'
+import perfilLogo from 'assets/icons/user-icon.png'
 import 'assets/styles/components/Header.scss'
 
 const Header = () => {
     return (
         <header className="header">
-            <img className="header__img" src={headerImage} alt="Platzi Video" />
+            <Link to="/">
+                <img
+                    className="header__img"
+                    src={headerImage}
+                    alt="Platzi Video"
+                />
+            </Link>
             <div className="header__menu">
                 <div className="header__menu--profile">
                     <img src={perfilLogo} alt="" />
@@ -17,7 +24,7 @@ const Header = () => {
                         <a href="/">Cuenta</a>
                     </li>
                     <li>
-                        <a href="/">Cerrar Sesión</a>
+                        <Link to="/login">Iniciar Sesión</Link>
                     </li>
                 </ul>
             </div>

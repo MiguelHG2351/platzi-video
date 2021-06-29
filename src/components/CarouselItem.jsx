@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import 'assets/styles/components/CarouselItem.scss'
-import playIcon from 'assets/images/play-icon.png'
-import plusIcon from 'assets/images/plus-icon.png'
+import playIcon from 'assets/icons/play-icon.png'
+import plusIcon from 'assets/icons/plus-icon.png'
 
 const CarouselItem = ({ title, year, contentRating, duration, cover }) => {
     return (

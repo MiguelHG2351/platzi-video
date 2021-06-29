@@ -1,20 +1,16 @@
-import { hot } from 'react-hot-loader/root'
 import React from 'react'
-import Header from 'components/Header'
 import Search from 'components/Search'
 import Categories from 'components/Categories'
 import Carousel from 'components/Carousel'
 import CarouselItem from 'components/CarouselItem'
-import Footer from 'components/Footer'
 import useInitialState from 'hooks/useInitialState'
 
-const App = () => {
+const Home = () => {
     const videos = useInitialState('http://localhost:3001/initalState')
 
     console.log(videos)
     return (
         <div>
-            <Header />
             <Search />
             {videos &&
                 Object.keys(videos).map((keyValue, key) => {
@@ -35,9 +31,8 @@ const App = () => {
                         </Categories>
                     )
                 })}
-            <Footer />
         </div>
     )
 }
 
-export default hot(App)
+export default Home
