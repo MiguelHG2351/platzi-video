@@ -1,8 +1,14 @@
 .carousel {
-    overflow: auto;
+    overflow-x: auto;
     padding-left: 30px;
     max-width: 100%;
     position: relative;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 5px;
+    background-color: #09f;
+    border-radius: 12px;
 }
 
 .carousel__container {

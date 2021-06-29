@@ -1,6 +1,10 @@
 @import './Vars.scss';
 @import './Media.scss';
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: $theme-font;
