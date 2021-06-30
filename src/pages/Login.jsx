@@ -1,20 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loginRequest } from 'actions/index'
 import googleIcon from 'assets/icons/google-icon.png'
 import twitterIcon from 'assets/icons/twitter-icon.png'
 import 'assets/styles/pages/Login.scss'
 
-const Login = () => {
+const Login = ({ loginRequest, history }) => {
+    const [form, setForm] = useState({
+        email: '',
+    })
+
+    function handleInput(event) {
+        setForm({
+            ...form,
+            [event.target.name]: event.target.value,
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        loginRequest(form)
+        history.push('/')
+    }
+
     return (
         <section className="login">
             <section className="login__container">
                 <h2>Inicia sesión</h2>
-                <form className="login__container--form">
-                    <input className="input" type="text" placeholder="Correo" />
+                <form
+                    className="login__container--form"
+                    onSubmit={handleSubmit}
+                >
                     <input
+                        name="email"
+                        className="input"
+                        type="text"
+                        placeholder="Correo"
+                        onChange={handleInput}
+                    />
+                    <input
+                        name="password"
                         className="input"
                         type="password"
                         placeholder="Contraseña"
+                        onChange={handleInput}
                     />
                     <button className="button">Iniciar sesión</button>
                     <div className="login__container--remember-me">
@@ -46,4 +76,8 @@ const Login = () => {
     )
 }
 
-export default Login
+const mapDispathToProps = {
+    loginRequest,
+}
+
+export default connect(null, mapDispathToProps)(Login)

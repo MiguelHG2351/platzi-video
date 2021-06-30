@@ -10,3 +10,22 @@ body {
     font-family: $theme-font;
     background: $main-color;
 }
+
+.input {
+    font-family: 'Muli', sans-serif;
+    height: 50px;
+    outline: none;
+    color: white;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    font-size: 16px;
+}
+
+.input:not(.isHome) {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #fff;
+    border-bottom: 2px solid white;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+}
