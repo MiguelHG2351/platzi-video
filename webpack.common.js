@@ -1,5 +1,5 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
@@ -7,22 +7,22 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].bundle.js',
+        filename: 'assets/[name].bundle.js',
         chunkFilename: '[name].bundle.js',
         publicPath: '/',
     },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            components: path.resolve(__dirname, 'src/components'),
-            containers: path.resolve(__dirname, 'src/containers'),
-            pages: path.resolve(__dirname, 'src/pages'),
-            routes: path.resolve(__dirname, 'src/routes'),
-            assets: path.resolve(__dirname, 'src/assets'),
-            hooks: path.resolve(__dirname, 'src/hooks'),
-            actions: path.resolve(__dirname, 'src/actions'),
-            reducers: path.resolve(__dirname, 'src/reducers'),
-            utils: path.resolve(__dirname, 'src/utils'),
+            components: path.resolve(__dirname, 'src/frontend/components'),
+            containers: path.resolve(__dirname, 'src/frontend/containers'),
+            pages: path.resolve(__dirname, 'src/frontend/pages'),
+            routes: path.resolve(__dirname, 'src/frontend/routes'),
+            assets: path.resolve(__dirname, 'src/frontend/assets'),
+            hooks: path.resolve(__dirname, 'src/frontend/hooks'),
+            actions: path.resolve(__dirname, 'src/frontend/actions'),
+            reducers: path.resolve(__dirname, 'src/frontend/reducers'),
+            utils: path.resolve(__dirname, 'src/frontend/utils'),
         },
     },
     module: {
@@ -55,13 +55,10 @@ module.exports = {
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-            filename: './index.html',
-        }),
+        new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new MiniCSSExtractPlugin({
-            filename: 'assets/[name].css',
+            filename: 'assets/style.css',
         }),
         new ImageMinimizerPlugin({
             minimizerOptions: {

@@ -4,7 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const config = require('./webpack.common')
 
 module.exports = merge(config, {
-    entry: './src/index.js',
+    entry: './src/frontend/index.js',
     mode: 'production',
     optimization: {
         minimize: true,

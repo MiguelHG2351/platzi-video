@@ -8,7 +8,7 @@
             "assets/*": ["./src/assets/*"],
             "hooks/*": ["./src/hooks/*"],
             "pages/*": ["./src/pages/*"],
-            "actions/*": ["./src/actions/*"],
+            "actions/*": ["src/frontend/actions/*"],
             "reducers/*": ["./src/reducers/*"],
             "utils/*": ["./src/utils/*"]
         }

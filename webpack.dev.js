@@ -2,7 +2,11 @@ const { merge } = require('webpack-merge')
 const config = require('./webpack.common')
 
 module.exports = merge(config, {
-    entry: ['react-hot-loader/patch', './src/index.js'],
+    entry: [
+        'react-hot-loader/patch',
+        './src/frontend/index.js',
+        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true',
+    ],
     mode: 'development',
     devServer: {
         host: '127.0.0.1',
@@ -10,10 +14,5 @@ module.exports = merge(config, {
         historyApiFallback: true,
         hot: true,
         compress: true,
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-        },
     },
 })

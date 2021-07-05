@@ -1,27 +1,41 @@
 {
     "name": "platzi-video",
     "version": "1.0.0",
-    "description": "",
+    "description": "Proyecto de la escuela de JavaScript",
     "main": "index.js",
     "scripts": {
         "start": "webpack serve --open --config webpack.dev.js",
+        "start:dev": "nodemon src/server/index",
         "build": "webpack --config webpack.prod.js",
         "dev": "webpack serve --open --config webpack.dev.js",
         "lint": "eslint ./src/ --fix",
         "prepare": "husky install"
     },
-    "keywords": [],
+    "keywords": [
+        "platzi",
+        "react",
+        "webpack"
+    ],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@babel/register": "^7.14.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "history": "^4.10.1",
         "md5": "^2.3.0",
         "prop-types": "^15.7.2",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-hot-loader": "^4.13.0",
         "react-redux": "^7.2.4",
+        "react-router": "^5.2.0",
+        "react-router-config": "^5.1.1",
         "react-router-dom": "^5.2.0",
-        "redux": "^4.1.0"
+        "redux": "^4.1.0",
+        "webpack": "^5.42.0",
+        "webpack-dev-middleware": "^3.7.3",
+        "webpack-hot-middleware": "^2.25.0"
     },
     "devDependencies": {
         "@babel/core": "^7.14.6",
@@ -53,7 +67,6 @@
         "sass": "^1.35.1",
         "sass-loader": "^12.1.0",
         "terser-webpack-plugin": "^5.1.4",
-        "webpack": "^5.40.0",
         "webpack-cli": "^4.7.2",
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^5.8.0"
