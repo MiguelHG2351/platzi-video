@@ -5,7 +5,7 @@ import { createStore, compose } from 'redux'
 import { Router } from 'react-router'
 import { createBrowserHistory } from 'history'
 import initialState from './initialState'
-import App from './routes/App'
+import App from 'routes/App'
 import './assets/styles/App.scss'
 import reducer from 'reducers/'
 

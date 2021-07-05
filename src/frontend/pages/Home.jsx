@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Search from 'components/Search'
 import Categories from 'components/Categories'
+import Search from 'components/Search'
 import Carousel from 'components/Carousel'
 import CarouselItem from 'components/CarouselItem'
 

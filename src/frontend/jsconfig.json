@@ -3,14 +3,14 @@
         "target": "es6",
         "baseUrl": ".",
         "paths": {
-            "components/*": ["./src/components/*"],
-            "containers/*": ["./src/containers/*"],
-            "assets/*": ["./src/assets/*"],
-            "hooks/*": ["./src/hooks/*"],
-            "pages/*": ["./src/pages/*"],
+            "components/*": ["./src/frontend/components/*"],
+            "containers/*": ["./src/frontend/containers/*"],
+            "assets/*": ["./src/frontend/assets/*"],
+            "hooks/*": ["./src/frontend/hooks/*"],
+            "pages/*": ["./src/frontend/pages/*"],
             "actions/*": ["src/frontend/actions/*"],
-            "reducers/*": ["./src/reducers/*"],
-            "utils/*": ["./src/utils/*"]
+            "reducers/*": ["./src/frontend/reducers/*"],
+            "utils/*": ["./src/frontend/utils/*"]
         }
     },
     "exclude": ["dist"]
