@@ -1,5 +1,8 @@
 const { merge } = require('webpack-merge')
 const config = require('./webpack.common')
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 module.exports = merge(config, {
     entry: [
@@ -15,4 +18,15 @@ module.exports = merge(config, {
         hot: true,
         compress: true,
     },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new MiniCSSExtractPlugin({
+            filename: 'assets/style.css',
+        }),
+        new ImageMinimizerPlugin({
+            minimizerOptions: {
+                plugins: [['optipng', { optimizationLevel: 5 }]],
+            },
+        }),
+    ],
 })

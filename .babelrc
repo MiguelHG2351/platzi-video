@@ -1,4 +1,22 @@
 {
-    "plugins": ["react-hot-loader/babel"],
+    "plugins": [
+        "react-hot-loader/babel",
+        [
+            "module-resolver",
+            {
+                "alias": {
+                    "components": "./src/frontend/components/",
+                    "containers": "./src/frontend/containers/",
+                    "pages": "./src/frontend/pages/",
+                    "routes": "./src/frontend/routes/",
+                    "assets": "./src/frontend/assets/",
+                    "hooks": "./src/frontend/hooks/",
+                    "actions": "./src/frontend/actions/",
+                    "reducers": "./src/frontend/reducers/",
+                    "utils": "./src/frontend/utils/"
+                }
+            }
+        ]
+    ],
     "presets": ["@babel/preset-env", "@babel/preset-react"]
 }

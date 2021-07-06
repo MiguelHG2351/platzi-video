@@ -2,6 +2,11 @@ const { merge } = require('webpack-merge')
 const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const config = require('./webpack.common')
+const webpack = require('webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
+const CompressioWebpackPlugin = require('compression-webpack-plugin')
 
 module.exports = merge(config, {
     entry: './src/frontend/index.js',
@@ -34,4 +39,20 @@ module.exports = merge(config, {
             },
         },
     },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin(),
+        new MiniCSSExtractPlugin({
+            filename: 'assets/style.css',
+        }),
+        new CompressioWebpackPlugin({
+            test: /\.js$|\.css$/,
+            filename: '[path][base].gz',
+        }),
+        new ImageMinimizerPlugin({
+            minimizerOptions: {
+                plugins: [['optipng', { optimizationLevel: 5 }]],
+            },
+        }),
+    ],
 })
