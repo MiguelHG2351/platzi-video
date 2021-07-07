@@ -1,4 +1,5 @@
 export const setFavorite = (payload) => {
+    console.log('working')
     return {
         type: 'SET_FAVORITE',
         payload,

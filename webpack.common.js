@@ -1,14 +1,6 @@
-const path = require('path')
 const { loader } = require('mini-css-extract-plugin')
 
 module.exports = {
-    output: {
-        path: path.resolve(__dirname, 'src/server/public'),
-        filename: 'assets/[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
-        assetModuleFilename: 'assets/[name][ext]',
-        publicPath: '/',
-    },
     resolve: {
         extensions: ['.js', '.jsx'],
     },

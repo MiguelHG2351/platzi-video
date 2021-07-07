@@ -10,8 +10,9 @@ import { createStore } from 'redux'
 import { renderRoutes } from 'react-router-config'
 import { StaticRouter } from 'react-router-dom'
 import serverRoutes from '../frontend/routes/serverRoutes'
-import reducer from '../frontend/reducers'
+import reducer from '../frontend/reducers/index'
 import initialState from '../frontend/initialState'
+import getManifest from './getManifest'
 
 dotenv.config()
 const { ENV, PORT } = process.env
@@ -35,6 +36,12 @@ if (isDev) {
     app.use(webpackDevMiddleware(compiler, serverConfig))
     app.use(webpackHotMiddleware(compiler))
 } else {
+    app.use((req, res, next) => {
+        if (!req.hashManifest) {
+            req.hashManifest = getManifest()
+            next()
+        }
+    })
     app.use(express.static(`${__dirname}/public`))
     app.use(
         helmet({
@@ -45,7 +52,12 @@ if (isDev) {
     app.disable('x-powered-by')
 }
 
-const setResponse = (html, preloadedState) => {
+const setResponse = (html, preloadedState, manifest) => {
+    const mainStyles = manifest ? manifest['main.css'] : 'assets/style.css'
+    const mainBuild = manifest ? manifest['main.js'] : 'assets/main.js'
+    const vendor = manifest ? manifest['vendors.js'] : ''
+    const common = manifest ? manifest['commons.js'] : ''
+
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -55,7 +67,7 @@ const setResponse = (html, preloadedState) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>Platzi Video</title>
                 <link rel="icon" href="./logo-platzi-video.png" />
-                <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+                <link rel="stylesheet" type="text/css" href="${mainStyles}" />
             </head>
             <body>
                 <div id="app">${html}</div>
@@ -64,7 +76,9 @@ const setResponse = (html, preloadedState) => {
                         preloadedState
                     ).replace(/</g, '\\u003c')}
                 </script>
-                <script type="module" src="/assets/main.bundle.js"></script>
+                <script type="module" src="${mainBuild}"></script>
+                <script type="module" src="${vendor}"></script>
+                <script type="module" src="${common}"></script>
             </body>
         </html>
     `
@@ -81,7 +95,7 @@ const renderApp = (req, res) => {
         </Provider>
     )
 
-    res.send(setResponse(html, preloadedState))
+    res.send(setResponse(html, preloadedState, req.hashManifest))
 }
 
 app.get('*', renderApp)

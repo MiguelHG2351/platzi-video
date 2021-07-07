@@ -7,9 +7,19 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const CompressioWebpackPlugin = require('compression-webpack-plugin')
+const path = require('path')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = merge(config, {
     entry: './src/frontend/index.js',
+    output: {
+        path: path.resolve(__dirname, 'src/server/public'),
+        filename: 'assets/[name]-[fullhash].bundle.js',
+        chunkFilename: '[name].bundle.js',
+        assetModuleFilename: 'assets/[name][ext]',
+        publicPath: '/',
+    },
     mode: 'production',
     optimization: {
         minimize: true,
@@ -43,8 +53,9 @@ module.exports = merge(config, {
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new MiniCSSExtractPlugin({
-            filename: 'assets/style.css',
+            filename: 'assets/style-[fullhash].css',
         }),
+        new WebpackManifestPlugin(),
         new CompressioWebpackPlugin({
             test: /\.js$|\.css$/,
             filename: '[path][base].gz',
@@ -53,6 +64,10 @@ module.exports = merge(config, {
             minimizerOptions: {
                 plugins: [['optipng', { optimizationLevel: 5 }]],
             },
+        }),
+        new ESLintPlugin({
+            extensions: ['js', 'jsx'],
+            exclude: './node_modules/',
         }),
     ],
 })

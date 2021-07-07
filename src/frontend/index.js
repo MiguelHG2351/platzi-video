@@ -14,7 +14,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, preloadState, composeEnhancers())
 
 delete window.__PRELOADED_STATE__
-ReactDOM.render(
+ReactDOM.hydrate(
     <Provider store={store}>
         <Router history={history}>
             <App />
