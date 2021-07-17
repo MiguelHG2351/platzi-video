@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import className from 'utils/className'
+import className from 'utils/classname'
 import 'assets/styles/components/Search.scss'
 
 const Search = () => {
