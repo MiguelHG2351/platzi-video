@@ -6,7 +6,6 @@ const gravatar = (email) => {
     const formattedEmail = email.trim().toLowerCase()
     const hash = md5(formattedEmail, { encoding: 'binary' })
 
-    console.log(`${base}${hash}`)
     return `${base}${hash}`
 }
 

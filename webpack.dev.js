@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge')
 const config = require('./webpack.common')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const path = require('path')
 
@@ -27,6 +28,7 @@ module.exports = merge(config, {
         compress: true,
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new MiniCSSExtractPlugin({
             filename: 'assets/style.css',

@@ -2,7 +2,6 @@ const { merge } = require('webpack-merge')
 const CSSMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const config = require('./webpack.common')
-const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
@@ -50,7 +49,6 @@ module.exports = merge(config, {
         },
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
         new MiniCSSExtractPlugin({
             filename: 'assets/style-[fullhash].css',

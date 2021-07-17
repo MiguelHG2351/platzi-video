@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loginRequest } from 'actions/index'
+import { loginUser } from 'actions/index'
 import googleIcon from 'assets/icons/google-icon.png'
 import twitterIcon from 'assets/icons/twitter-icon.png'
 import 'assets/styles/pages/Login.scss'
 
-const Login = ({ loginRequest, history }) => {
+const Login = ({ loginUser, history }) => {
     const [form, setForm] = useState({
         email: '',
     })
@@ -20,8 +20,7 @@ const Login = ({ loginRequest, history }) => {
 
     function handleSubmit(event) {
         event.preventDefault()
-        loginRequest(form)
-        history.push('/')
+        loginUser(form, '/')
     }
 
     return (
@@ -46,7 +45,9 @@ const Login = ({ loginRequest, history }) => {
                         placeholder="Contraseña"
                         onChange={handleInput}
                     />
-                    <button className="button">Iniciar sesión</button>
+                    <button className="button" type="submit">
+                        Iniciar sesión
+                    </button>
                     <div className="login__container--remember-me">
                         <label>
                             <input
@@ -77,7 +78,7 @@ const Login = ({ loginRequest, history }) => {
 }
 
 const mapDispathToProps = {
-    loginRequest,
+    loginUser,
 }
 
 export default connect(null, mapDispathToProps)(Login)

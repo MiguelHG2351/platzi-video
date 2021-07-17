@@ -6,9 +6,8 @@
  * @param {{currentRoute: String, classnames: {fo: '/bar'}}} options
  */
 
-export default function className(name, options) {
+export default function customClass(name, options) {
     let newClassName = name
-    console.log(name)
     for (const option in options.classnames) {
         if (options.classnames[option] === options.currentRoute) {
             newClassName = `${newClassName} ${option}`

@@ -1,29 +1,33 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { logoutRequest } from 'actions/index'
-import gravatar from 'utils/gravatar'
+import { logoutRequest } from '../actions/index'
+import gravatar from '../utils/gravatar'
 import { connect } from 'react-redux'
-import className from 'utils/className'
-import headerImage from 'assets/images/logo-platzi-video-BW2.png'
-import perfilLogo from 'assets/icons/user-icon.png'
-import 'assets/styles/components/Header.scss'
+import customClassName from '../utils/className'
+import headerImage from '../assets/images/logo-platzi-video-BW2.png'
+import perfilLogo from '../assets/icons/user-icon.png'
+import '../assets/styles/components/Header.scss'
 
 const Header = (props) => {
     const { user } = props
     const hasUser =
         typeof user === 'undefined' ? false : Object.keys(user).length > 0
 
-    const backgroundHeader = className('header', {
+    const backgroundHeader = customClassName('header', {
         currentRoute: useLocation().pathname,
         classnames: {
             isLogin: '/login',
             isRegister: '/register',
         },
     })
-    console.log(backgroundHeader)
 
     function handleLogout() {
+        document.cookie = 'email='
+        document.cookie = 'name='
+        document.cookie = 'id='
+        document.cookie = 'token='
         props.logoutRequest({})
+        window.location.href = '/login'
     }
 
     return (

@@ -7,15 +7,19 @@ import Register from 'pages/Register'
 import NotFound from 'pages/NotFound'
 import Player from 'pages/Player'
 
-const App = () => {
+const App = ({ isLogged }) => {
     return (
         <Router>
             <Layout>
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={isLogged ? Home : Login} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
-                    <Route exact path="/player/:id" component={Player} />
+                    <Route
+                        exact
+                        path="/player/:id"
+                        component={isLogged ? Player : Login}
+                    />
                     <Route component={NotFound} />
                 </Switch>
             </Layout>
