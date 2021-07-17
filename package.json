@@ -4,7 +4,7 @@
     "description": "Proyecto de la escuela de JavaScript",
     "main": "index.js",
     "scripts": {
-        "start": "webpack serve --open --config webpack.dev.js",
+        "start": "node src/server/index.js",
         "start:dev": "nodemon src/server/index",
         "build": "webpack --config webpack.prod.js",
         "dev": "webpack serve --open --config webpack.dev.js",
@@ -56,12 +56,12 @@
         "webpack": "^5.42.0",
         "webpack-dev-middleware": "^3.7.3",
         "webpack-hot-middleware": "^2.25.0",
+        "@babel/core": "^7.14.6",
+        "@babel/preset-env": "^7.14.7",
         "webpack-manifest-plugin": "^3.1.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.14.6",
         "@babel/eslint-parser": "^7.14.7",
-        "@babel/preset-env": "^7.14.7",
         "@babel/preset-react": "^7.14.5",
         "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
         "babel-loader": "^8.2.2",
